@@ -1,0 +1,51 @@
+<section class="save-the-date-section" data-purpose="save-the-date-section">
+  <!-- Header Text -->
+  <div class="header-container">
+    <h2 class="title-main"><span class="title-word">SAVE</span> <img [src]="theWord" alt="the" class="title-script-img" /> <span class="title-word">DATE</span></h2>
+    <p class="subtitle">29 AGOSTO 2026 | ATLIXCO</p>
+  </div>
+
+  <!-- Envelope Component -->
+  <div class="envelope-wrapper">
+    <!-- Envelope Back Flap (Open) -->
+    <div class="envelope-back">
+      <img [src]="envelopeWrapper" alt="Envelope" class="envelope-back-img" />
+    </div>
+
+    <!-- Polaroid Photo (tilted) -->
+    <div class="polaroid-container">
+      <div class="polaroid-card">
+        <div class="polaroid-photo-frame">
+          <img [src]="img" alt="Lucero & Mario" class="polaroid-img" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Countdown Overlay -->
+    <div class="countdown-overlay">
+      <div class="countdown-grid">
+        <!-- Days -->
+        <div class="countdown-item">
+          <span class="countdown-number">{{ days }}</span>
+          <span class="countdown-label">DÍAS</span>
+        </div>
+
+        <div class="countdown-colon">:</div>
+
+        <!-- Hours -->
+        <div class="countdown-item">
+          <span class="countdown-number">{{ hours }}</span>
+          <span class="countdown-label">HORAS</span>
+        </div>
+
+        <div class="countdown-colon">:</div>
+
+        <!-- Minutes -->
+        <div class="countdown-item">
+          <span class="countdown-number">{{ minutes }}</span>
+          <span class="countdown-label">MINUTOS</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
