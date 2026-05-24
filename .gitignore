@@ -144,3 +144,4 @@ vite.config.ts.timestamp-*
 
 
 .angular/
+.DS_Store

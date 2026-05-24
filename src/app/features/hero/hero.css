@@ -1,0 +1,35 @@
+/* ─── Hero container ────────────────────────────────────────── */
+.hero-container {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* Buen fallback para navegadores antiguos */
+  height: 100dvh;
+  min-height: 884px; /* Asegura un mínimo de espacio para el contenido */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: #111827; 
+}
+
+/* ─── Background image ──────────────────────────────────────── */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  /* Eliminamos max-height para que herede el 100% real del padre siempre */
+}
+
+.hero-bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 68%;
+  /* El overflow: hidden aquí no es necesario, el padre ya lo tiene, pero no estorba */
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.40);
+}

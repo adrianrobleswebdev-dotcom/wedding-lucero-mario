@@ -6,7 +6,8 @@ export const routes: Routes = [
 
 
     {
-        path: '', component:Layout, pathMatch:'full'
+        path: '', component:Layout, pathMatch:'full',
+      
     },
  
 
