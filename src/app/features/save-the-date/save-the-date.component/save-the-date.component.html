@@ -1,7 +1,8 @@
 <section class="save-the-date-section" data-purpose="save-the-date-section">
   <!-- Header Text -->
   <div class="header-container">
-    <h2 class="title-main"><span class="title-word">SAVE</span> <img [src]="theWord" alt="the" class="title-script-img" /> <span class="title-word">DATE</span></h2>
+    <h2 class="title-main"><span class="title-word">SAVE</span> <img [src]="theWord" alt="the"
+        class="title-script-img" /> <span class="title-word">DATE</span></h2>
     <p class="subtitle">29 AGOSTO 2026 | ATLIXCO</p>
   </div>
 
@@ -46,6 +47,24 @@
           <span class="countdown-label">MINUTOS</span>
         </div>
       </div>
+    </div>
+  </div>  <!-- Vows Section -->
+  <div class="vows-container">
+    <h3 class="vows-title">
+      <span class="vows-title-top">NUESTRO SÍ</span>
+      <span class="vows-title-bottom">ante Dios</span>
+    </h3>
+
+    <div class="vows-paragraphs">
+      @for (paragraph of vowesParagraphs; track $index) {
+        <p class="vows-paragraph">{{ paragraph }}</p>
+      }
+    </div>
+
+    <div class="vows-heart-wrapper">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="vows-heart-icon">
+        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+      </svg>
     </div>
   </div>
 </section>

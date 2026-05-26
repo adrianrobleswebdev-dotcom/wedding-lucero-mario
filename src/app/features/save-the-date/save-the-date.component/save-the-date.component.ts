@@ -11,6 +11,8 @@ export class SaveTheDateComponent implements OnInit, OnDestroy {
   envelopeWrapper: string = "/pictures/letter.webp";
   theWord: string = "/pictures/the.png";
 
+  church: string = ""
+
   days: string = '00';
   hours: string = '00';
   minutes: string = '00';
@@ -52,4 +54,46 @@ export class SaveTheDateComponent implements OnInit, OnDestroy {
     this.hours = h.toString().padStart(2, '0');
     this.minutes = m.toString().padStart(2, '0');
   }
+
+
+
+
+  vowes: string = `Porque creemos que el amor
+verdadero encuentra su plenitud
+en Dios, queremos consagrar
+nuestra unión ante Él y celebrar el
+sacramento del matrimonio
+rodeados de quienes más amamos.
+El amor que Dios sembró en
+nuestros corazones nos llama hoy
+a unir nuestras vidas ante Sus
+ojos, en la promesa más grande:
+amarnos para siempre.
+Con la bendición de Dios y el amor
+que nos une, hemos decidido
+consagrar nuestras vidas en el
+sagrado sacramento del
+matrimonio y compartir este
+momento con quienes forman parte
+de nuestra historia.`
+
+  get vowesParagraphs(): string[] {
+    const text = this.vowes;
+    const p1End = text.indexOf("rodeados de quienes más amamos.") + "rodeados de quienes más amamos.".length;
+    const p2End = text.indexOf("amarnos para siempre.") + "amarnos para siempre.".length;
+
+    if (p1End > 30 && p2End > p1End) {
+      return [
+        text.substring(0, p1End).trim(),
+        text.substring(p1End, p2End).trim(),
+        text.substring(p2End).trim()
+      ];
+    }
+    return [text];
+  }
+
+
+
+
+
 }
