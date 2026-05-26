@@ -1,0 +1,424 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600&family=Pinyon+Script&family=Cormorant+Garamond:wght@300;400;500;600&display=swap');
+
+.save-the-date-section {
+  background-color: rgb(141, 111, 64);
+  padding: 100px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 700px;
+  box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
+}
+
+/* ─── Header Styling ───────────────────────────────────────── */
+.header-container {
+  text-align: center;
+  margin-bottom: 50px;
+  z-index: 10;
+}
+
+.title-main {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: normal;
+  font-size: 2.75rem;
+  color: #ffffff;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.2;
+}
+
+.title-word {
+  display: inline-block;
+  transform: scaleY(1.1);
+  /* Estira las letras verticalmente un 30% */
+  transform-origin: center;
+}
+
+.title-script-img {
+  height: 6rem;
+  width: auto;
+  display: inline-block;
+  transform: translateX(-4px) translateY(6px);
+  margin: 0 -5px;
+  opacity: 0.95;
+}
+
+.subtitle {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.9);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  transform: scaleY(1.1);
+  margin-top: 0px;
+  margin-bottom: 0;
+}
+
+/* ─── Envelope & Polaroid Layers ───────────────────────────── */
+.envelope-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  aspect-ratio: 637 / 800;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* Envelope Back Flap */
+.envelope-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+}
+
+.envelope-back-img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+/* Polaroid Container & Card */
+.polaroid-container {
+  position: absolute;
+  top: 17%;
+  left: 3%;
+  width: 90%;
+  z-index: 20;
+}
+
+.polaroid-card {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background-color: #ffffff;
+  padding: 5% 5% 12% 5%;
+  /* Classic Polaroid aspect ratio */
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  border-radius: 2px;
+  transform: rotate(-8deg);
+  transform-origin: center center;
+  transition:
+    transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1),
+    box-shadow 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  box-sizing: border-box;
+}
+
+.polaroid-photo-frame {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: #f7f7f7;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.polaroid-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
+  transition: transform 0.9s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+/* Hover effects */
+.envelope-wrapper:hover .polaroid-card {
+  transform: rotate(-4deg) translateY(-30px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.28);
+}
+
+/* Envelope Front & Pocket */
+.envelope-front {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 66.667%;
+  /* 250px / 375px */
+  z-index: 30;
+  filter: drop-shadow(0 -5px 12px rgba(0, 0, 0, 0.08));
+}
+
+.envelope-front-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* ─── Countdown Overlay ─────────────────────────────────────── */
+.countdown-overlay {
+  position: absolute;
+  bottom: 12%;
+  /* Align inside the bottom flap */
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 40;
+  pointer-events: none;
+}
+
+.countdown-grid {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 20px;
+  color: #383023;
+  /* Classy vintage ink stamp color */
+}
+
+.countdown-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 65px;
+}
+
+.countdown-number {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.5rem;
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: 0.05em;
+  display: inline-block;
+}
+
+.countdown-colon {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.2rem;
+  font-weight: 300;
+  line-height: 1;
+  padding-top: 2px;
+}
+
+.countdown-label {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.58rem;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  color: #615541;
+  margin-top: 8px;
+  text-transform: uppercase;
+}
+
+/* ─── Vows Section ─────────────────────────────────────────── */
+.vows-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-top: 200px;
+  width: 100%;
+  max-width: 520px;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.vows-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 45px;
+}
+
+.vows-title-top {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 4rem;
+  font-weight: 300;
+  letter-spacing: -5px;
+  color: #f5f2eb;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.vows-title-bottom {
+  font-family: 'Pinyon Script', cursive;
+  font-size: 4.3rem;
+  color: #f5f2eb;
+  line-height: 0.8;
+  margin-top: -12px;
+  font-style: italic;
+  text-transform: none;
+  /* keep lowercase 'ante Dios' */
+}
+
+.vows-paragraphs {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 50px;
+  width: 100%;
+}
+
+.vows-paragraph {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.90rem;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0.18em;
+  color: rgba(245, 242, 235, 0.9);
+  text-transform: uppercase;
+  white-space: pre-line;
+  margin: 0;
+  font-kerning: normal;
+}
+
+.vows-heart-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.vows-heart-icon {
+  width:80px;
+  height:80px;
+  color: #f5f2eb;
+  opacity: 0.9;
+}
+
+/* ─── Responsive adjustments ────────────────────────────────── */
+@media (max-width: 640px) {
+  .save-the-date-section {
+    padding: 60px 15px;
+    min-height: 550px;
+  }
+
+  .header-container {
+    margin-bottom: 35px;
+  }
+
+  .title-main {
+    font-size: 1.85rem;
+    gap: 8px;
+  }
+
+  .title-script-img {
+    height: 2.5rem;
+  }
+
+  .subtitle {
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+  }
+
+  .envelope-wrapper {
+    max-width: 350px;
+  }
+
+  .countdown-grid {
+    gap: 10px;
+  }
+
+  .countdown-item {
+    min-width: 45px;
+  }
+
+  .countdown-number {
+    font-size: 1.8rem;
+  }
+
+  .countdown-colon {
+    font-size: 1.6rem;
+  }
+
+  .countdown-label {
+    font-size: 0.45rem;
+    letter-spacing: 0.16em;
+    margin-top: 4px;
+  }
+
+  /* Vows Responsive */
+  .vows-container {
+    margin-top: 80px;
+    max-width: 100%;
+    padding: 0 10px;
+  }
+
+  .vows-title {
+    margin-bottom: 30px;
+  }
+
+  .vows-title-top {
+    font-size: 2.2rem;
+    letter-spacing: -3px;
+  }
+
+  .vows-title-bottom {
+    font-size: 3.2rem;
+    margin-top: -8px;
+  }
+
+  .vows-paragraphs {
+    gap: 20px;
+    margin-bottom: 40px;
+  }
+
+  .vows-paragraph {
+    font-size: 0.8rem;
+    line-height: 1.3;
+    letter-spacing: 0.14em;
+  }
+
+  .vows-heart-icon {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+@media (max-width: 375px) {
+  .title-main {
+    font-size: 1.5rem;
+  }
+
+  .title-script-img {
+    height: 2rem;
+  }
+
+  .envelope-wrapper {
+    max-width: 290px;
+  }
+
+  .countdown-number {
+    font-size: 1.5rem;
+  }
+
+  .countdown-colon {
+    font-size: 1.3rem;
+  }
+
+  .countdown-item {
+    min-width: 38px;
+  }
+
+  /* Vows Micro-devices */
+  .vows-title-top {
+    font-size: 1.8rem;
+    letter-spacing: -2px;
+  }
+
+  .vows-title-bottom {
+    font-size: 2.6rem;
+  }
+
+  .vows-paragraph {
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+  }
+
+  .vows-heart-icon {
+    width: 40px;
+    height: 40px;
+  }
+}
