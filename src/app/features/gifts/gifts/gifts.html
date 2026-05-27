@@ -1,96 +1,166 @@
 <div class="w-full flex flex-col items-center gap-4 pt-16  px-6 bg-[#8d6f40] min-h-screen">
 
-    <!-- Título SUGERENCIA -->
-    <h2 class="text-white uppercase text-center text-[3.8rem] font-[500] leading-none tracking-[-0.05em]"
+    <h2 class="text-white uppercase text-center text-[3.0rem] font-[500] leading-none tracking-[-0.05em]"
         style="font-family: 'Cormorant Garamond', Georgia, serif;">
         SUGERENCIA
     </h2>
 
-    <!-- Subtítulo de regalos (cursive script) -->
-    <p class="text-white text-[3rem] leading-none -mt-1"
-       style="font-family: 'Dancing Script', cursive; font-weight: 500;">
+    <p class="text-white text-[2.5rem] leading-none mt-[-1.25rem]"
+        style="font-family: 'Dancing Script', cursive; font-weight: 500;">
         de regalos
     </p>
 
-    <!-- Ícono de regalo (SVG) -->
     <div class="my-4">
-        <svg xmlns="http://www.w3.org/2000/svg" width="90" height="90" viewBox="0 0 100 100" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <!-- Cuerpo de la caja -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="90" height="90" viewBox="0 0 100 100" fill="none" stroke="white"
+            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <rect x="15" y="45" width="70" height="45" rx="2" />
-            <!-- Tapa -->
             <rect x="10" y="33" width="80" height="14" rx="2" />
-            <!-- Línea central horizontal -->
             <line x1="50" y1="33" x2="50" y2="90" />
-            <!-- Lazo - lado izquierdo -->
             <path d="M50 33 C40 28, 28 20, 34 14 C40 8, 50 20, 50 33" />
-            <!-- Lazo - lado derecho -->
             <path d="M50 33 C60 28, 72 20, 66 14 C60 8, 50 20, 50 33" />
-            <!-- Etiqueta colgante -->
             <line x1="56" y1="33" x2="60" y2="42" />
             <rect x="57" y="42" width="12" height="9" rx="1" />
         </svg>
     </div>
 
-    <!-- Descripción -->
-    <p class="text-white text-center text-[1.2rem] leading-relaxed max-w-[260px]"
-       style="font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 400; font-size: 1.15rem;">
-        Nuestra mayor alegría es contar con ustedes. En lugar de regalos tradicionales,
-        tendremos un buzón para que puedan dejarnos su aportación en sobre si lo desean
+    <p class="text-white text-center text-[1.2rem] max-w-[280px] md:max-w-[500px]"
+        style="font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 400; font-size: 1.15rem;">
+        Su presencia es nuestro mejor regalo. Si desean tener un detalle con nosotros, contaremos con un buzón de sobres
+        y mesa de regalos en Palacio de Hierro.
     </p>
 
-    <!-- Separador -->
     <div class="w-16 border-t border-white/40 my-2"></div>
 
-    <!-- El Palacio de Hierro (script logo) -->
-    <p class="text-white text-center leading-none w-full flex items-center justify-center relative my-[3rem]">
+    <p class="text-white text-center leading-none w-full flex items-center justify-center relative my-[2rem] z-0 ">
         <img class="md:max-w-[17%] max-w-[60%] absolute" src="/pictures/ph.png" alt="">
     </p>
 
-    <!-- Número -->
     <p class="text-white text-center tracking-widest text-sm uppercase text-xl"
-       style="font-family: 'Cormorant Garamond', Georgia, serif; letter-spacing: 0.2em;">
+        style="font-family: 'Cormorant Garamond', Georgia, serif; letter-spacing: 0.2em;">
         No. 408062
     </p>
 
-    <!-- Botón VER AQUÍ -->
-    <a href="#"
-       class="mt-2 px-8 py-3 border border-white text-white uppercase tracking-widest text-xs hover:bg-white hover:text-[#8d6f40] transition-all duration-300"
-       style="font-family: 'Cormorant Garamond', Georgia, serif; letter-spacing: 0.3em;">
-        VER AQUÍ
-    </a>
+    <div class="z-10 relative">
+        <a href="https://www.elpalaciodehierro.com/listaregalos?srsltid=AfmBOoqUOapcSnOC4CZkrZJr-ONEAgG6NvPuTLjaAcnyBG3BFJF8mAHV#/event/408062"
+            target="_blank" rel="noopener noreferrer"
+            class="mt-2 px-8 py-3 border border-white text-white uppercase tracking-widest text-xs hover:bg-white hover:text-[#8d6f40] transition-all duration-300"
+            style="font-family: 'Cormorant Garamond', Georgia, serif; letter-spacing: 0.3em;">
+            VER AQUÍ
+        </a>
+    </div>
 
-
-
-
-    <div class="w-full flex justify-center relative overflow-hidden h-[32rem] sm:h-[40rem] md:h-[46rem]">
-        <!-- Imagen con overlay solo sobre ella -->
+    <div class="w-full flex justify-center relative overflow-hidden mt-[3rem] h-[32rem] sm:h-[40rem] md:h-[46rem]">
         <div class="w-full sm:w-[60%] md:w-[38%] absolute top-0 sm:top-10 md:top-20 bottom-0 relative">
             <img class="w-full h-full object-cover object-top" src="/pictures/compressed_4.webp" alt="">
-            <!-- Fondo negro transparente solo sobre la imagen -->
             <div class="absolute inset-0 bg-black/70"></div>
         </div>
 
-        <!-- Overlay: texto y botón -->
         <div class="absolute inset-0 flex flex-col items-center pt-[6rem] sm:pt-[10rem] md:pt-[15rem] gap-3">
-            <!-- Título -->
             <h2 class="text-white uppercase text-center text-[2.2rem] sm:text-[2.8rem] md:text-[3.5rem] font-[500] leading-none tracking-[-0.03em]"
                 style="font-family: 'Cormorant Garamond', Georgia, serif;">
                 CONFIRMA<br>TU ASISTENCIA
             </h2>
 
-            <!-- Subtítulo -->
             <p class="text-white text-center text-[0.85rem] sm:text-[1rem]"
-               style="font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 400; letter-spacing: 0.02em;">
+                style="font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 400; letter-spacing: 0.02em;">
                 Agradecemos confirmar tu asistencia.
             </p>
 
-            <!-- Botón -->
-            <a href="#"
-               class="mt-[4rem] sm:mt-[6rem] md:mt-[9rem] px-6 sm:px-8 py-3 border border-white text-white uppercase tracking-widest text-xs hover:bg-white hover:text-[#8d6f40] transition-all duration-300"
-               style="font-family: 'Cormorant Garamond', Georgia, serif; letter-spacing: 0.3em;">
+            <a href="#" (click)="openModal($event)"
+                class="mt-[4rem] sm:mt-[6rem] md:mt-[9rem] px-6 sm:px-8 py-3 border border-white text-white uppercase tracking-widest text-xs hover:bg-white hover:text-[#8d6f40] transition-all duration-300"
+                style="font-family: 'Cormorant Garamond', Georgia, serif; letter-spacing: 0.3em;">
                 CONFIRMA AQUÍ
             </a>
         </div>
     </div>
 
 </div>
+
+@if (isModalOpen) {
+<div class="modal-overlay" (click)="closeModal()">
+    <div class="modal-container" (click)="$event.stopPropagation()">
+
+        <button class="modal-close" (click)="closeModal()" aria-label="Cerrar modal">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+        </button>
+
+        <h3 class="modal-title">CONFIRMA TU ASISTENCIA</h3>
+
+        <div class="modal-divider"></div>
+
+        <form [formGroup]="confirmForm" (ngSubmit)="onSubmit()" class="modal-form">
+
+            <div class="form-group">
+                <label for="nombreCompleto" class="form-label">Nombre Completo</label>
+                <input
+                    type="text"
+                    id="nombreCompleto"
+                    formControlName="nombreCompleto"
+                    class="form-input"
+                    placeholder="Ingresa tu nombre completo"
+                    maxlength="50"
+                    [class.form-input-error]="confirmForm.get('nombreCompleto')?.invalid && (confirmForm.get('nombreCompleto')?.touched || confirmForm.get('nombreCompleto')?.dirty)"
+                >
+                @if (confirmForm.get('nombreCompleto')?.invalid && (confirmForm.get('nombreCompleto')?.touched || confirmForm.get('nombreCompleto')?.dirty)) {
+                    <span class="form-error">
+                        @if (confirmForm.get('nombreCompleto')?.errors?.['required']) {
+                            El nombre es requerido.
+                        } @else if (confirmForm.get('nombreCompleto')?.errors?.['pattern']) {
+                            Solo se permiten letras.
+                        }
+                    </span>
+                }
+            </div>
+
+            <div class="form-group">
+                <label for="telefono" class="form-label">Teléfono</label>
+                <input
+                    type="tel"
+                    id="telefono"
+                    formControlName="telefono"
+                    class="form-input"
+                    placeholder="Ingresa tu número de teléfono"
+                    minlength="10"
+                    maxlength="10"
+
+                    [class.form-input-error]="confirmForm.get('telefono')?.invalid && (confirmForm.get('telefono')?.touched || confirmForm.get('telefono')?.dirty)"
+                >
+                
+                @if (isValidatingPhone) {
+                    <span class="form-checking" style="font-size: 0.85em; color: #a58c56; display: block; margin-top: 4px;">
+                        Verificando número...
+                    </span>
+                }
+
+                @if (confirmForm.get('telefono')?.invalid && (confirmForm.get('telefono')?.touched || confirmForm.get('telefono')?.dirty)) {
+                    <span class="form-error" style="color: #ff3333; font-weight: 500; font-size: 0.85em; display: block; margin-top: 4px;">
+                        @if (confirmForm.get('telefono')?.errors?.['required']) {
+                            El teléfono es requerido.
+                        } @else if (confirmForm.get('telefono')?.errors?.['pattern']) {
+                            Solo se permiten números.
+                        } @else if (confirmForm.get('telefono')?.errors?.['minlength']) {
+                            El teléfono debe tener al menos 10 dígitos.
+                        } @else if (confirmForm.get('telefono')?.errors?.['duplicated']) {
+                            Este teléfono ya ha sido registrado previamente.
+                        }
+                    </span>
+                }
+            </div>
+
+            <button 
+                type="submit" 
+                class="modal-submit-btn"
+                [disabled]="confirmForm.invalid || isSubmitting || isAlreadyRegistered || isValidatingPhone"
+                [class.btn-disabled]="confirmForm.invalid || isSubmitting || isAlreadyRegistered || isValidatingPhone"
+            >
+                {{ isSubmitting ? 'ENVIANDO...' : 'CONFIRMA ASISTENCIA' }}
+            </button>
+
+        </form>
+    </div>
+</div>
+}
