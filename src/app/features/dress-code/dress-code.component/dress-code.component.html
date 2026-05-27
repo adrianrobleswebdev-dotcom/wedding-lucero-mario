@@ -1,23 +1,23 @@
-<div class="w-full bg-[#8d6f40] py-8 sm:py-10 flex flex-col items-center gap-7 sm:gap-10">
+<div class="w-full bg-[#8d6f40] pb-12 pt-8 sm:py-16 flex flex-col items-center  sm:gap-12">
 
 
     <!-- Imagen de dress code -->
-    <div class="img-container flex justify-center items-center w-full mt-2">
-        <img class="w-[55%] sm:w-[35%] md:w-[25%] lg:w-[20%] object-cover" [src]="dressCodeIMG" alt="">
+    <div class="img-container flex justify-center items-center w-full mb-[5rem] ">
+        <img class="w-[90%] sm:w-[35%] md:w-[25%] lg:w-[20%] object-cover" [src]="dressCodeIMG" alt="">
     </div>
 
 
 
     <!-- Título principal -->
     <div class="text-center px-6">
-        <h2 class="text-white uppercase tracking-tight leading-tight"
-            style="font-family: 'Cormorant Garamond', 'Georgia', serif; font-size: clamp(2rem, 6vw, 3.5rem); font-weight: 300; ">
+        <h2 class="text-white uppercase tracking-tighter text-[3.3rem]"
+            style="font-family: 'Cormorant Garamond', 'Georgia', serif;  font-weight: 300; line-height: .8; ">
             CÓDIGO DE<br>VESTIMENTA
         </h2>
         <!-- Palabra "formal" en cursiva -->
-        <div class="text-center mt-[20px]">
-            <span class="text-white italic"
-                style="font-family: 'Dancing Script', 'Brush Script MT', cursive; font-size: clamp(2rem, 7vw, 3.5rem); font-weight: 400;">
+        <div class="text-center mt-[-.6rem]">
+            <span class="text-white italic text-[4rem] "
+                style="font-family: 'Dancing Script', 'Brush Script MT', cursive;  font-weight: 400;">
                 formal
             </span>
         </div>
@@ -26,13 +26,34 @@
 
 
     <!-- Íconos y texto -->
-    <div class="flex flex-col items-center gap-5 sm:gap-6 mt-2">
-        <div class="flex justify-center gap-10 sm:gap-16 md:gap-24">
-            <img class="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 object-contain" src="/pictures/dress.svg" alt="Mujeres largo">
-            <img class="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 object-contain" src="/pictures/suit.svg" alt="Hombres traje">
+    <div class="flex flex-col items-center gap-6 sm:gap-8 mt-2">
+        <div class="flex justify-center gap-1 sm:gap-20 md:gap-28">
+            <img class="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 object-contain" src="/pictures/dress.png" alt="Mujeres largo">
+            <img class="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 object-contain" src="/pictures/suit.png" alt="Hombres traje">
         </div>
-        <p class="text-white text-center font-normal tracking-wide text-base sm:text-lg md:text-xl">
+        <p class="text-white text-center font-normal tracking-wide text-lg sm:text-xl md:text-2xl">
             Mujeres largo / Hombres traje
+        </p>
+    </div>
+
+
+
+    <!-- Divisor Ornamental -->
+    <div class="flex items-center justify-center w-full max-w-[1000px] sm:max-w-[350px] my-2">
+     <img  class="w-[75%]" src="/pictures/separator.png" alt="">
+    </div>
+
+
+
+    <!-- Sección SIN NIÑOS -->
+    <div class="flex flex-col items-center gap-1 sm:gap-6 text-center px-6">
+        <h2 class="text-white uppercase tracking-tight leading-tight text-[3.2rem] "
+            style="font-family: 'Cormorant Garamond', 'Georgia', serif;  font-weight: 500; ">
+            SIN NIÑOS
+        </h2>
+        <p class="text-white text-center font-medium leading-relaxed max-w-[280px] sm:max-w-[360px] text-sm sm:text-lg"
+           style="font-family: 'Montserrat', sans-serif; letter-spacing: 0.05em;">
+            Un evento para adultos está en camino. ¡Así que prepárense para una noche llena de diversión! Dejemos a los niños en casa esta vez.
         </p>
     </div>
 

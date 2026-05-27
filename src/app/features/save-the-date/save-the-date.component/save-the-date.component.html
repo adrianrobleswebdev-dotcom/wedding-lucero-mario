@@ -1,13 +1,21 @@
 <section class="save-the-date-section" data-purpose="save-the-date-section">
   <!-- Header Text -->
-  <div class="header-container">
+  <div #topContainer class="header-container transition-all duration-[1200ms] ease-out transform"
+       [class.opacity-0]="!isTopVisible"
+       [class.translate-y-16]="!isTopVisible"
+       [class.opacity-100]="isTopVisible"
+       [class.translate-y-0]="isTopVisible">
     <h2 class="title-main"><span class="title-word">SAVE</span> <img [src]="theWord" alt="the"
         class="title-script-img" /> <span class="title-word">DATE</span></h2>
     <p class="subtitle">29 AGOSTO 2026 | ATLIXCO</p>
   </div>
 
   <!-- Envelope Component -->
-  <div class="envelope-wrapper">
+  <div class="envelope-wrapper transition-all duration-[1200ms] delay-150 ease-out transform"
+       [class.opacity-0]="!isTopVisible"
+       [class.translate-y-16]="!isTopVisible"
+       [class.opacity-100]="isTopVisible"
+       [class.translate-y-0]="isTopVisible">
     <!-- Envelope Back Flap (Open) -->
     <div class="envelope-back">
       <img [src]="envelopeWrapper" alt="Envelope" class="envelope-back-img" />
@@ -49,7 +57,11 @@
       </div>
     </div>
   </div>  <!-- Vows Section -->
-  <div class="vows-container">
+  <div #vowsContainer class="vows-container transition-all duration-[1500ms] ease-out transform"
+       [class.opacity-0]="!isVowsVisible"
+       [class.translate-y-16]="!isVowsVisible"
+       [class.opacity-100]="isVowsVisible"
+       [class.translate-y-0]="isVowsVisible">
     <h3 class="vows-title">
       <span class="vows-title-top">NUESTRO SÍ</span>
       <span class="vows-title-bottom">ante Dios</span>

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ElementRef, ViewChild, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-save-the-date',
@@ -6,7 +6,9 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
   templateUrl: './save-the-date.component.html',
   styleUrl: './save-the-date.component.css',
 })
-export class SaveTheDateComponent implements OnInit, OnDestroy {
+export class SaveTheDateComponent implements OnInit, OnDestroy, AfterViewInit {
+  constructor(private cdr: ChangeDetectorRef) {}
+
   img: string = '/pictures/compressed_3.webp';
   envelopeWrapper: string = "/pictures/letter.webp";
   theWord: string = "/pictures/the.png";
@@ -20,6 +22,12 @@ export class SaveTheDateComponent implements OnInit, OnDestroy {
   private timerId: any;
   private targetDate: Date = new Date('2026-08-29T18:00:00'); // 6:00 PM on August 29, 2026
 
+  @ViewChild('topContainer') topContainer!: ElementRef;
+  @ViewChild('vowsContainer') vowsContainer!: ElementRef;
+  isTopVisible: boolean = false;
+  isVowsVisible: boolean = false;
+  private observer!: IntersectionObserver;
+
   ngOnInit() {
     this.updateCountdown();
     // Update every second for precision
@@ -28,9 +36,41 @@ export class SaveTheDateComponent implements OnInit, OnDestroy {
     }, 1000);
   }
 
+  ngAfterViewInit() {
+    if (typeof window !== 'undefined' && 'IntersectionObserver' in window) {
+      this.observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            if (entry.target === this.topContainer.nativeElement) {
+              this.isTopVisible = true;
+              this.observer.unobserve(entry.target);
+            } else if (entry.target === this.vowsContainer.nativeElement) {
+              this.isVowsVisible = true;
+              this.observer.unobserve(entry.target);
+            }
+            this.cdr.detectChanges();
+          }
+        });
+      }, {
+        threshold: 0.05 // Triggers when 5% of the element is visible
+      });
+      
+      this.observer.observe(this.topContainer.nativeElement);
+      this.observer.observe(this.vowsContainer.nativeElement);
+    } else {
+      // Fallback for SSR or non-supported browsers
+      this.isTopVisible = true;
+      this.isVowsVisible = true;
+      this.cdr.detectChanges();
+    }
+  }
+
   ngOnDestroy() {
     if (this.timerId) {
       clearInterval(this.timerId);
+    }
+    if (this.observer) {
+      this.observer.disconnect();
     }
   }
 

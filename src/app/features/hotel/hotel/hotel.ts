@@ -10,5 +10,9 @@ export class Hotel {
 
 
   hotelIMG = "/pictures/compressed_2.webp";
+  hotelNewIMG = "/pictures/compressed_5.webp";
+
+
+ 
 
 }
