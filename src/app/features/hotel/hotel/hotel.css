@@ -1,24 +1,15 @@
 /* ─── Imagen de Hospedaje ──────────────────────────────────────── */
 .hospedaje-img {
-    width: 35%;
+    width: 100%;
     height: auto;
     display: block;
-    /* o una altura fija/100% dependiendo de tu contenedor */
-
-    /* Si necesitas que flote como en tu primer código, descomenta la siguiente línea: */
-    /* position: absolute; */
-
     object-fit: cover;
-
-    /* Aquí está la magia: ajusta este 20% hacia arriba o abajo 
-     exactamente igual que hiciste con el 68% del Hero */
     object-position: center 80%;
     overflow: hidden;
 }
 
-
-@media (min-width:300px ) and (max-width: 1024px) {
+@media (min-width: 1025px) {
     .hospedaje-img {
-        width: 100%;
+        width: 35%;
     }
 }
