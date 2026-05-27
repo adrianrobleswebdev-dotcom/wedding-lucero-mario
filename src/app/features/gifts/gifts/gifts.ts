@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-gifts',
@@ -10,6 +11,13 @@ import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angula
 })
 export class Gifts {
   isModalOpen = false;
+  isSubmitting = false; 
+
+  private http = inject(HttpClient);
+  isValidatingPhone = false; 
+  isAlreadyRegistered = false; 
+
+  private googleScriptUrl = 'https://script.google.com/macros/s/AKfycbwg5US3zf6XDRED2ZYrL5icGmcy1wxcnBSVpz9XfTyKN4USc8_wj6c6j8RNlZMft_-4/exec';
 
   confirmForm = new FormGroup({
     nombreCompleto: new FormControl('', [
@@ -32,39 +40,59 @@ export class Gifts {
     this.isModalOpen = false;
     document.body.style.overflow = '';
     this.confirmForm.reset();
+    
+    // IMPORTANTE: Resetear todas las banderas para cuando vuelvan a abrir el modal
+    this.isSubmitting = false;
+    this.isValidatingPhone = false;
+    this.isAlreadyRegistered = false;
   }
 
   onSubmit(): void {
-    if (this.confirmForm.valid) {
-      console.log('Formulario enviado:', this.confirmForm.value);
-      // Aquí puedes agregar la lógica para enviar los datos
-      this.closeModal();
-    } else {
-      this.confirmForm.markAllAsTouched();
-    }
-  }
+    this.confirmForm.markAllAsTouched();
 
+    if (this.confirmForm.invalid || this.isSubmitting) return;
 
-  // Método para permitir solo letras y espacios
-  onNameInput(event: Event): void {
-    const input = event.target as HTMLInputElement;
-    // Reemplaza cualquier carácter que NO sea una letra o espacio por una cadena vacía
-    let cleanedValue = input.value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]/g, '');
-    
-    // Actualiza el valor en el DOM y en el FormControl
-    input.value = cleanedValue;
-    this.confirmForm.get('nombreCompleto')?.setValue(cleanedValue, { emitEvent: false });
-  }
+    const telefonoControl = this.confirmForm.get('telefono');
+    const telefono = telefonoControl?.value || '';
 
-  // Método para permitir solo números
-  onPhoneInput(event: Event): void {
-    const input = event.target as HTMLInputElement;
-    // Reemplaza cualquier carácter que NO sea un número por una cadena vacía
-    let cleanedValue = input.value.replace(/[^0-9]/g, '');
-    
-    // Actualiza el valor en el DOM y en el FormControl
-    input.value = cleanedValue;
-    this.confirmForm.get('telefono')?.setValue(cleanedValue, { emitEvent: false });
+    this.isValidatingPhone = true;
+    this.isAlreadyRegistered = false;
+
+    const urlSinCache = `${this.googleScriptUrl}?telefono=${telefono}&t=${new Date().getTime()}`;
+
+    this.http.get<{ existe: boolean }>(urlSinCache).subscribe({
+      next: (res) => {
+        this.isValidatingPhone = false;
+        if (res.existe) {
+          this.isAlreadyRegistered = true;
+          telefonoControl?.setErrors({ duplicated: true });
+          telefonoControl?.markAsTouched();
+          return;
+        }
+
+        this.isSubmitting = true;
+        const payload = {
+          nombreCompleto: this.confirmForm.value.nombreCompleto || '',
+          telefono,
+          fechaRegistro: new Date().toLocaleString('es-MX', { timeZone: 'America/Mexico_City' })
+        };
+
+        this.http.post(this.googleScriptUrl, JSON.stringify(payload)).subscribe({
+          next: () => {
+            alert('¡Asistencia confirmada correctamente!');
+            this.closeModal();
+          },
+          error: () => {
+            alert('Hubo un problema al registrar tu asistencia.');
+            this.isSubmitting = false;
+          }
+        });
+      },
+      error: () => {
+        this.isValidatingPhone = false;
+        alert('No se pudo verificar el teléfono. Intenta de nuevo.');
+      }
+    });
   }
 
 }
