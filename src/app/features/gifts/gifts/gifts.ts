@@ -11,14 +11,15 @@ import { HttpClient } from '@angular/common/http';
 })
 export class Gifts {
   isModalOpen = false;
-  isSubmitting = false; 
-
+  isSubmitting = false;
+  isSuccess = false; // Bandera para mostrar el mensaje de éxito
   private http = inject(HttpClient);
-  isValidatingPhone = false; 
-  isAlreadyRegistered = false; 
+  isValidatingPhone = false;
+  isAlreadyRegistered = false;
 
-  private googleScriptUrl = 'https://script.google.com/macros/s/AKfycbwg5US3zf6XDRED2ZYrL5icGmcy1wxcnBSVpz9XfTyKN4USc8_wj6c6j8RNlZMft_-4/exec';
+  private googleScriptUrl = 'https://script.google.com/macros/s/AKfycbxzhMXKyTQUXLdaCbq25DsS3RLnY58S1mNMRLIKVOgg5L7DWKLFbfgbGr2ueW3WMzeb/exec';
 
+  // 1. Actualiza tu FormGroup agregando el control 'asistencia'
   confirmForm = new FormGroup({
     nombreCompleto: new FormControl('', [
       Validators.required,
@@ -26,8 +27,12 @@ export class Gifts {
     ]),
     telefono: new FormControl('', [
       Validators.required,
-      Validators.pattern(/^[0-9]+$/)
+      Validators.pattern(/^[0-9]+$/),
+      Validators.minLength(10) // Añadido para que coincida con tu HTML
     ]),
+    asistencia: new FormControl(null, [ // Inicializado en null, requerido para avanzar
+      Validators.required
+    ])
   });
 
   openModal(event: Event): void {
@@ -40,17 +45,20 @@ export class Gifts {
     this.isModalOpen = false;
     document.body.style.overflow = '';
     this.confirmForm.reset();
-    
-    // IMPORTANTE: Resetear todas las banderas para cuando vuelvan a abrir el modal
+
+    // Reseteamos todas las banderas al cerrar el modal
     this.isSubmitting = false;
     this.isValidatingPhone = false;
     this.isAlreadyRegistered = false;
+    this.isSuccess = false; // IMPORTANTE: Limpiamos el éxito para la próxima vez
   }
 
+  // 2. Actualiza tu método onSubmit
   onSubmit(): void {
     this.confirmForm.markAllAsTouched();
+    // Si ya se envió con éxito o está procesando, no hacemos nada
+    if (this.confirmForm.invalid || this.isSubmitting || this.isSuccess) return;
 
-    if (this.confirmForm.invalid || this.isSubmitting) return;
 
     const telefonoControl = this.confirmForm.get('telefono');
     const telefono = telefonoControl?.value || '';
@@ -71,10 +79,13 @@ export class Gifts {
         }
 
         this.isSubmitting = true;
+
+        // Armamos el payload con el valor booleano de la asistencia
         const payload = {
           nombreCompleto: this.confirmForm.value.nombreCompleto || '',
           telefono,
-          fechaRegistro: new Date().toLocaleString('es-MX', { timeZone: 'America/Mexico_City' })
+          fechaRegistro: new Date().toLocaleString('es-MX', { timeZone: 'America/Mexico_City' }),
+          asistire: this.confirmForm.value.asistencia ? 'SI' : 'NO'
         };
 
         this.http.post(this.googleScriptUrl, JSON.stringify(payload)).subscribe({
