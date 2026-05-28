@@ -31,16 +31,16 @@
 
     <div class="w-16 border-t border-white/40 my-2"></div>
 
-    <p class="text-white text-center leading-none w-full flex items-center justify-center relative my-[2rem] z-0 ">
-        <img class="md:max-w-[17%] max-w-[60%] absolute" src="/pictures/ph.png" alt="">
-    </p>
-
-    <p class="text-white text-center tracking-widest text-sm uppercase text-xl"
+    <p class="text-white text-center tracking-widest text-sm uppercase text-xl mb-5"
         style="font-family: 'Cormorant Garamond', Georgia, serif; letter-spacing: 0.2em;">
         No. 408062
     </p>
+    <p class="text-white text-center leading-none w-full flex items-center justify-center relative my-[1rem] z-0 ">
+        <img class="md:max-w-[17%] max-w-[60%] absolute" src="/pictures/ph.png" alt="">
+    </p>
 
-    <div class="z-10 relative">
+
+    <div class="z-10 relative mt-8">
         <a href="https://www.elpalaciodehierro.com/listaregalos?srsltid=AfmBOoqUOapcSnOC4CZkrZJr-ONEAgG6NvPuTLjaAcnyBG3BFJF8mAHV#/event/408062"
             target="_blank" rel="noopener noreferrer"
             class="mt-2 px-8 py-3 border border-white text-white uppercase tracking-widest text-xs hover:bg-white hover:text-[#8d6f40] transition-all duration-300"
@@ -96,67 +96,80 @@
 
             <div class="form-group">
                 <label for="nombreCompleto" class="form-label">Nombre Completo</label>
-                <input
-                    type="text"
-                    id="nombreCompleto"
-                    formControlName="nombreCompleto"
-                    class="form-input"
-                    placeholder="Ingresa tu nombre completo"
-                    maxlength="50"
-                    [class.form-input-error]="confirmForm.get('nombreCompleto')?.invalid && (confirmForm.get('nombreCompleto')?.touched || confirmForm.get('nombreCompleto')?.dirty)"
-                >
-                @if (confirmForm.get('nombreCompleto')?.invalid && (confirmForm.get('nombreCompleto')?.touched || confirmForm.get('nombreCompleto')?.dirty)) {
-                    <span class="form-error">
-                        @if (confirmForm.get('nombreCompleto')?.errors?.['required']) {
-                            El nombre es requerido.
-                        } @else if (confirmForm.get('nombreCompleto')?.errors?.['pattern']) {
-                            Solo se permiten letras.
-                        }
-                    </span>
+                <input type="text" id="nombreCompleto" formControlName="nombreCompleto" class="form-input"
+                    placeholder="Ingresa tu nombre completo" maxlength="50"
+                    [class.form-input-error]="confirmForm.get('nombreCompleto')?.invalid && (confirmForm.get('nombreCompleto')?.touched || confirmForm.get('nombreCompleto')?.dirty)">
+                @if (confirmForm.get('nombreCompleto')?.invalid && (confirmForm.get('nombreCompleto')?.touched ||
+                confirmForm.get('nombreCompleto')?.dirty)) {
+                <span class="form-error">
+                    @if (confirmForm.get('nombreCompleto')?.errors?.['required']) {
+                    El nombre es requerido.
+                    } @else if (confirmForm.get('nombreCompleto')?.errors?.['pattern']) {
+                    Solo se permiten letras.
+                    }
+                </span>
                 }
             </div>
 
             <div class="form-group">
                 <label for="telefono" class="form-label">Teléfono</label>
-                <input
-                    type="tel"
-                    id="telefono"
-                    formControlName="telefono"
-                    class="form-input"
-                    placeholder="Ingresa tu número de teléfono"
-                    minlength="10"
-                    maxlength="10"
+                <input type="tel" id="telefono" formControlName="telefono" class="form-input"
+                    placeholder="Ingresa tu número de teléfono" minlength="10" maxlength="10"
+                    [class.form-input-error]="confirmForm.get('telefono')?.invalid && (confirmForm.get('telefono')?.touched || confirmForm.get('telefono')?.dirty)">
 
-                    [class.form-input-error]="confirmForm.get('telefono')?.invalid && (confirmForm.get('telefono')?.touched || confirmForm.get('telefono')?.dirty)"
-                >
-                
                 @if (isValidatingPhone) {
-                    <span class="form-checking" style="font-size: 0.85em; color: #a58c56; display: block; margin-top: 4px;">
-                        Verificando número...
-                    </span>
+                <span class="form-checking" style="font-size: 0.85em; color: #a58c56; display: block; margin-top: 4px;">
+                    Verificando número...
+                </span>
                 }
 
-                @if (confirmForm.get('telefono')?.invalid && (confirmForm.get('telefono')?.touched || confirmForm.get('telefono')?.dirty)) {
-                    <span class="form-error" style="color: #ff3333; font-weight: 500; font-size: 0.85em; display: block; margin-top: 4px;">
-                        @if (confirmForm.get('telefono')?.errors?.['required']) {
-                            El teléfono es requerido.
-                        } @else if (confirmForm.get('telefono')?.errors?.['pattern']) {
-                            Solo se permiten números.
-                        } @else if (confirmForm.get('telefono')?.errors?.['minlength']) {
-                            El teléfono debe tener al menos 10 dígitos.
-                        } @else if (confirmForm.get('telefono')?.errors?.['duplicated']) {
-                            Este teléfono ya ha sido registrado previamente.
-                        }
-                    </span>
+                @if (confirmForm.get('telefono')?.invalid && (confirmForm.get('telefono')?.touched ||
+                confirmForm.get('telefono')?.dirty)) {
+                <span class="form-error"
+                    style="color: #ff3333; font-weight: 500; font-size: 0.85em; display: block; margin-top: 4px;">
+                    @if (confirmForm.get('telefono')?.errors?.['required']) {
+                    El teléfono es requerido.
+                    } @else if (confirmForm.get('telefono')?.errors?.['pattern']) {
+                    Solo se permiten números.
+                    } @else if (confirmForm.get('telefono')?.errors?.['minlength']) {
+                    El teléfono debe tener al menos 10 dígitos.
+                    } @else if (confirmForm.get('telefono')?.errors?.['duplicated']) {
+                    Este teléfono ya ha sido registrado previamente.
+                    }
+                </span>
                 }
             </div>
 
-            <button 
-                type="submit" 
-                class="modal-submit-btn"
+            <div class="form-group" style="margin-bottom: 1.5rem;">
+                <label class="form-label">¿Asistirás al evento?</label>
+                <div style="display: flex; gap: 1.5rem; margin-top: 0.5rem;">
+                    <label
+                        style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer; font-family: 'Cormorant Garamond', Georgia, serif; color: #333;">
+                        <input type="radio" formControlName="asistencia" [value]="true"
+                            style="accent-color: #8d6f40; width: 1.2rem; height: 1.2rem;">
+                        Sí asistiré
+                    </label>
+
+                    <label
+                        style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer; font-family: 'Cormorant Garamond', Georgia, serif; color: #333;">
+                        <input type="radio" formControlName="asistencia" [value]="false"
+                            style="accent-color: #8d6f40; width: 1.2rem; height: 1.2rem;">
+                        No asistiré
+                    </label>
+                </div>
+
+                @if (confirmForm.get('asistencia')?.invalid && (confirmForm.get('asistencia')?.touched ||
+                confirmForm.get('asistencia')?.dirty)) {
+                <span class="form-error"
+                    style="color: #ff3333; font-weight: 500; font-size: 0.85em; display: block; margin-top: 4px;">
+                    Por favor selecciona una opción para continuar.
+                </span>
+                }
+            </div>
+
+            <button type="submit" class="modal-submit-btn"
                 [disabled]="confirmForm.invalid || isSubmitting || isAlreadyRegistered || isValidatingPhone"
-                [class.btn-disabled]="confirmForm.invalid || isSubmitting || isAlreadyRegistered || isValidatingPhone"
-            >
+                [class.btn-disabled]="confirmForm.invalid || isSubmitting || isAlreadyRegistered || isValidatingPhone">
                 {{ isSubmitting ? 'ENVIANDO...' : 'CONFIRMA ASISTENCIA' }}
             </button>
 

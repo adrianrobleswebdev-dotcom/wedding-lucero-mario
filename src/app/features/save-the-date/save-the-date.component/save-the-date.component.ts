@@ -7,7 +7,7 @@ import { Component, OnInit, OnDestroy, ElementRef, ViewChild, AfterViewInit, Cha
   styleUrl: './save-the-date.component.css',
 })
 export class SaveTheDateComponent implements OnInit, OnDestroy, AfterViewInit {
-  constructor(private cdr: ChangeDetectorRef) {}
+  constructor(private cdr: ChangeDetectorRef) { }
 
   img: string = '/pictures/compressed_3.webp';
   envelopeWrapper: string = "/pictures/letter.webp";
@@ -54,7 +54,7 @@ export class SaveTheDateComponent implements OnInit, OnDestroy, AfterViewInit {
       }, {
         threshold: 0.05 // Triggers when 5% of the element is visible
       });
-      
+
       this.observer.observe(this.topContainer.nativeElement);
       this.observer.observe(this.vowsContainer.nativeElement);
     } else {
@@ -99,34 +99,27 @@ export class SaveTheDateComponent implements OnInit, OnDestroy, AfterViewInit {
 
 
   vowes: string = `Porque creemos que el amor
-verdadero encuentra su plenitud
-en Dios, queremos consagrar
-nuestra unión ante Él y celebrar el
+verdadero encuentra su
+plenitud en Dios, queremos
+consagrar nuestra unión
+ante Él y celebrar el
 sacramento del matrimonio
-rodeados de quienes más amamos.
-El amor que Dios sembró en
-nuestros corazones nos llama hoy
-a unir nuestras vidas ante Sus
-ojos, en la promesa más grande:
-amarnos para siempre.
-Con la bendición de Dios y el amor
-que nos une, hemos decidido
-consagrar nuestras vidas en el
-sagrado sacramento del
-matrimonio y compartir este
-momento con quienes forman parte
-de nuestra historia.`
+rodeados de quienes más
+amamos.
+Con la bendición de Dios y el
+amor que nos une, hemos
+decidido caminar juntos
+para siempre.`
 
   get vowesParagraphs(): string[] {
     const text = this.vowes;
-    const p1End = text.indexOf("rodeados de quienes más amamos.") + "rodeados de quienes más amamos.".length;
-    const p2End = text.indexOf("amarnos para siempre.") + "amarnos para siempre.".length;
+    const p1Marker = "amamos.";
+    const p1End = text.indexOf(p1Marker) + p1Marker.length;
 
-    if (p1End > 30 && p2End > p1End) {
+    if (p1End > p1Marker.length) {
       return [
         text.substring(0, p1End).trim(),
-        text.substring(p1End, p2End).trim(),
-        text.substring(p2End).trim()
+        text.substring(p1End).trim()
       ];
     }
     return [text];
