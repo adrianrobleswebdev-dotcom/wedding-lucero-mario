@@ -263,12 +263,12 @@
 
 .vows-paragraph {
   font-family: 'Montserrat', sans-serif;
-  font-size: 0.90rem;
+  font-size: 0.9rem;
   font-weight: 400;
   line-height: 1.2;
   letter-spacing: 0.18em;
   color: rgba(245, 242, 235, 0.9);
-  text-transform: uppercase;
+  text-transform: none;
   white-space: pre-line;
   margin: 0;
   font-kerning: normal;
@@ -282,8 +282,8 @@
 }
 
 .vows-heart-icon {
-  width:80px;
-  height:80px;
+  width: 80px;
+  height: 80px;
   color: #f5f2eb;
   opacity: 0.9;
 }
@@ -315,6 +315,14 @@
 
   .envelope-wrapper {
     max-width: 350px;
+  }
+
+  .polaroid-container {
+    top: 10%;
+  }
+
+  .countdown-overlay {
+    bottom: 8%;
   }
 
   .countdown-grid {
@@ -362,7 +370,7 @@
 
   .vows-paragraphs {
     gap: 15px;
-    margin-bottom:20px;
+    margin-bottom: 20px;
   }
 
   .vows-paragraph {
@@ -388,6 +396,14 @@
 
   .envelope-wrapper {
     max-width: 290px;
+  }
+
+  .polaroid-container {
+    top: 8%;
+  }
+
+  .countdown-overlay {
+    bottom: 6%;
   }
 
   .countdown-number {
@@ -418,7 +434,7 @@
   }
 
   .vows-heart-icon {
-    width:60px;
-    height:60px;
+    width: 60px;
+    height: 60px;
   }
 }
